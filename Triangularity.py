@@ -35,7 +35,7 @@ def run(code):
             elif command == "E":
                 stack.append(eval(stack.pop()))
             elif command == "I":
-                stack.append(STDIN[stack.pop()])
+                stack.append(STDIN[stack.pop() % len(STDIN)])
             elif command == "S":
                 stack, stack2 = stack2, stack
             elif command == "=":
@@ -93,12 +93,12 @@ def run(code):
                 a = stack[-1]
                 b = stack[-2]
                 stack = stack[:-2]
-                stack.append(a[:b])
+                stack.append(a[:b % len(a)])
             elif command == "t":
                 a = stack[-1]
                 b = stack[-2]
                 stack = stack[:-2]
-                stack.append(a[b:])
+                stack.append(a[b % len(a):])
             elif command in "0123456789":
                 stack.append(stack.pop() * 10 + int(command))
             elif command == "u":
@@ -109,7 +109,7 @@ def run(code):
                 a = stack[-1]
                 b = stack[-2]
                 stack = stack[:-2]
-                stack.append(a[b])
+                stack.append(a[b % len(a)])
             elif command == "l":
                 a = stack[-1]
                 b = stack[-2]
