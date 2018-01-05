@@ -107,7 +107,7 @@ def run(code):
                 stack.append(sum(stack.pop()))
             elif command == "w":
                 stack.append(sorted(stack.pop()))
-            elif command == "i":
+            elif command == "m":
                 a = stack[-1]
                 b = stack[-2]
                 stack = stack[:-2]
