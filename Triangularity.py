@@ -4,6 +4,7 @@ stack2 = []
 def run(code):
     global stack
     global stack2
+    STDIN = __import__('sys').stdin.read().split("\n")
     lines = code.split('\n')
     length = len(code.split('\n'))
     if not all(len(elem) == length * 2 - 1 for elem in lines):
@@ -34,7 +35,7 @@ def run(code):
             elif command == "E":
                 stack.append(eval(stack.pop()))
             elif command == "I":
-                stack.append(__import__('sys').stdin.read().split("\n")[stack.pop()])
+                stack.append(STDIN[stack.pop()])
             elif command == "S":
                 stack, stack2 = stack2, stack
             elif command == "=":
