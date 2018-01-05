@@ -24,6 +24,10 @@ def run(code):
                 stack.append(0 if stack.pop() else 1)
             elif command == ")":
                 stack.append(0)
+            elif command == "E":
+                stack.append(eval(stack.pop()))
+            elif command == "I":
+                stack.append(__import__('sys').stdin.read().split("\n")[stack.pop()])
             elif command == "S":
                 stack, stack2 = stack2, stack
             elif command == "=":
@@ -130,10 +134,9 @@ def run(code):
         else:
             if command != '"':
                 stack.append(stack.pop() + command)
+    if stack:
+        print(stack[-1])
 
 if __name__ == '__main__':
     program = open(__import__('sys').argv[1], 'r').read()
     run(program)
-
-if stack:
-    print(stack[-1])
