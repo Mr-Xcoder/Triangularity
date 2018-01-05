@@ -26,6 +26,11 @@ def run(code):
                 stack.append(0 if stack.pop() else 1)
             elif command == ")":
                 stack.append(0)
+            elif command == "r":
+                a = stack[-1]
+                b = stack[-2]
+                stack = stack[:-2]
+                stack.append(list(range(a, b)))
             elif command == "E":
                 stack.append(eval(stack.pop()))
             elif command == "I":
