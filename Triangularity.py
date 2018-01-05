@@ -73,6 +73,8 @@ def run(code):
                 stack.append(len(stack.pop()))
             elif command == "W":
                 stack.append([stack])
+            elif command == "w":
+                stack.append([stack.pop()])
             elif command == "a":
                 stack2.append(stack.pop())
             elif command == "s":
