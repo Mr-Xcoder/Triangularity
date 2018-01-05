@@ -105,7 +105,7 @@ def run(code):
                 stack.append(stack.pop() * 10 + int(command))
             elif command == "u":
                 stack.append(sum(stack.pop()))
-            elif command == "w":
+            elif command == "O":
                 stack.append(sorted(stack.pop()))
             elif command == "m":
                 a = stack[-1]
