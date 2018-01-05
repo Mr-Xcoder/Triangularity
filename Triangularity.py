@@ -10,7 +10,7 @@ def run(code):
         print("I smell no triangularity. YOU SHALL NOT PASS!")
         return
     for i in range(length - 1):
-        if lines[i][:length - i - 1] == lines[i][- (length - i - 1):] == (length - i - 1) * ".":
+        if lines[i][:length + ~i] == lines[i][- (length + ~i):] == (length + ~i) * ".":
             continue
         else:
             print("I smell no triangularity. YOU SHALL NOT PASS!")
@@ -20,6 +20,8 @@ def run(code):
         if code[:index].count('"') % 2 == 0:
             if command == "@":
                 stack.append(stack.pop() + 1)
+            elif command == "P":
+                stack.pop()
             elif command == "!":
                 stack.append(0 if stack.pop() else 1)
             elif command == ")":
