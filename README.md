@@ -1,2 +1,14 @@
-# Triangularity
-The Triangularity Esolang.
+# Welcome to Triangularity!
+
+This is a recreational programming language, very minimalistic, that doesn't yet have any kind of loops, and which is only meant to solve easy tasks. 
+
+"Hello, World!" program:
+
+    ....... .......
+    ......   ......
+    .....     .....
+    ....       ....
+    ...         ...
+    ..           ..
+    .             .
+    "Hello, World!"
