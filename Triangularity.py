@@ -15,8 +15,8 @@ def run(code):
             continue
         else:
             print("I smell no triangularity. YOU SHALL NOT PASS!")
-            break
             return
+            break
     for index, command in enumerate(code):
         if code[:index].count('"') % 2 == 0:
             if command == "@":
