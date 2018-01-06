@@ -17,4 +17,4 @@ This is a recreational programming language, very minimalistic, that doesn't yet
 
 **Fun fact:** Valid Triagularity programs must have the byte count listed in [OEIS A056220](https://oeis.org/A056220) (except for -1), otherwise you are probably doing something wrong.
 
-If you have questions, encounter problem, spot bugs or want to request features, please ping me (`@Mr.Xcoder`) in [its dedicate chatroom](https://chat.stackexchange.com/rooms/71290/a-triangular-strange-esolang) (SE chat).
+If you have questions, encounter problem, spot bugs or want to request features, please ping me (`@Mr.Xcoder`) in [its dedicated chatroom](https://chat.stackexchange.com/rooms/71290/a-triangular-strange-esolang) (SE chat).
