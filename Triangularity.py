@@ -7,7 +7,7 @@ def run(code):
     STDIN = __import__('sys').stdin.read().split("\n")
     lines = code.split('\n')
     length = len(code.split('\n'))
-    if not all(len(elem) == length * 2 - 1 for elem in lines):
+    if not all(len(elem) == length * 2 - 1 if index != len(lines) else len(elem) <= length * 2 - 1 for index, elem in enumerate(lines)):
         print("I smell no triangularity. YOU SHALL NOT PASS!")
         return
     for i in range(length - 1):
