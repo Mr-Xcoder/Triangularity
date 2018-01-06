@@ -71,7 +71,7 @@ def run(code):
             elif command == "L":
                 stack.append(len(stack.pop()))
             elif command == "W":
-                stack.append([stack])
+                stack = [stack]
             elif command == "w":
                 stack.append([stack.pop()])
             elif command == "a":
