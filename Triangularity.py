@@ -81,7 +81,8 @@ def run(code):
                 a = stack[-1]
                 b = stack[-2]
                 stack = stack[:-2]
-                stack.append(a, b)
+                stack.append(a)
+                stack.append(b)
             elif command == "R":
                 stack.append(stack.pop()[::-1])
             elif command == "^":
