@@ -141,13 +141,6 @@ def run(code):
                 stack.append(chr(stack.pop()))
             elif command == "o":
                 stack.append(ord(stack.pop()))
-            elif command == ",":
-                a = stack[-1]
-                b = stack[-2]
-                stack = stack[:-2]
-                stack.append([a, b])
-            elif command == "N":
-                print(stack)
         else:
             if command != '"':
                 stack.append(stack.pop() + command)
