@@ -12,8 +12,18 @@ This is a recreational programming language, very minimalistic, that doesn't yet
     ..           ..
     .             .
     "Hello, World!"
-    
+
 [Try it online!](https://tio.run/##KynKTMxLL81JLMosqfz/Xw8CFKA0F5SroIDMV1CACXDBuRABLgQXLMCFxAUJcCFzgQJcSh6pOTn5Ogrh@UU5KYpK//8DAA "Triangularity – Try It Online")
+
+Or, much shorter:
+
+    .... ....
+    ..."!"...
+    .."rld"..
+    ."o, Wo".
+    "Hell"+++
+
+[Try it online!](https://tio.run/##KynKTMxLL81JLMosqfz/Xw8IFEAEFxArKSpBWEpFOSlKIJZSvo5CeL6SHpeSR2pOjpK2tvb//wA "Triangularity – Try It Online")
 
 **Fun fact:** Valid Triangularity programs must have the character count listed in [OEIS A056220](https://oeis.org/A056220) (except for -1), otherwise you are probably doing something wrong.
 
