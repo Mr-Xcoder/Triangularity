@@ -1,9 +1,7 @@
 stack = []
-stack2 = []
 
 def run(code):
     global stack
-    global stack2
     STDIN = __import__('sys').stdin.read().split("\n")
     lines = code.split('\n')
     length = len(code.split('\n'))
@@ -35,8 +33,6 @@ def run(code):
                 stack.append(eval(stack.pop()))
             elif command == "I":
                 stack.append(STDIN[stack.pop() % len(STDIN)])
-            elif command == "S":
-                stack, stack2 = stack2, stack
             elif command == "=":
                 a = stack[-1]
                 b = stack[-2]
@@ -74,8 +70,6 @@ def run(code):
                 stack = [stack]
             elif command == "w":
                 stack.append([stack.pop()])
-            elif command == "a":
-                stack2.append(stack.pop())
             elif command == "s":
                 a = stack[-1]
                 b = stack[-2]
