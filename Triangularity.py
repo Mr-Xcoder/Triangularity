@@ -1,22 +1,47 @@
 stack = []
+visited_indices = []
+additive_index = 0
+mapFlag = False
 
 def run(code):
 	global stack
+	global mapFlag
+	global visited_indices
+	global additive_index
 	STDIN = __import__('sys').stdin.read().split("\n")
 	lines = code.split('\n')
 	length = len(code.split('\n'))
-	if not all(len(elem) == length * 2 - 1 for elem in lines):
-		print("I smell no triangularity. YOU SHALL NOT PASS!")
-		return
-	for i in range(length - 1):
-		if lines[i][:length + ~i] == lines[i][- (length + ~i):] == (length + ~i) * ".":
-			continue
-		else:
+	if not mapFlag:
+		if not all(len(elem) == length * 2 - 1 for elem in lines):
 			print("I smell no triangularity. YOU SHALL NOT PASS!")
 			return
+		for i in range(length - 1):
+			if lines[i][:length + ~i] == lines[i][- (length + ~i):] == (length + ~i) * ".":
+				continue
+			else:
+				print("I smell no triangularity. YOU SHALL NOT PASS!")
+				return
 	for index, command in enumerate(code):
+		if index + additive_index not in visited_indices:
+			visited_indices.append(index + additive_index)
+		else:
+			if not mapFlag:
+				continue
 		if code[:index].count('"') % 2 == 0:
-			if command == "@":
+			if command == "M":
+				stack_copy = stack
+				added_list = []
+				mapped = stack.pop()
+				additive_index = index + 1
+				mapFlag = True
+				for ind, element in enumerate(mapped):
+					stack = [element]
+					run(code[index + 1 : index + code[index:].find("}")])
+					added_list.append(stack[-1])
+				stack = stack_copy + [added_list]
+				mapFlag = False
+				additive_index = 0
+			elif command == "@":
 				stack.append(stack.pop() + 1)
 			elif command == "P":
 				stack.pop()
@@ -135,10 +160,11 @@ def run(code):
 				stack.append(chr(stack.pop()))
 			elif command == "o":
 				stack.append(ord(stack.pop()))
+				
 		else:
 			if command != '"':
 				stack.append(stack.pop() + command)
-	if stack:
+	if stack and not mapFlag:
 		print(stack[-1])
         
 if __name__ == '__main__':
