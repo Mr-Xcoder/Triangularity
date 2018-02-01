@@ -2,13 +2,13 @@ stack = []
 visited_indices = []
 additive_index = 0
 mapFlag = False
+STDIN = __import__('sys').stdin.read().split("\n")
 
 def run(code):
 	global stack
 	global mapFlag
 	global visited_indices
 	global additive_index
-	STDIN = __import__('sys').stdin.read().split("\n")
 	lines = code.split('\n')
 	length = len(code.split('\n'))
 	if not mapFlag:
@@ -114,12 +114,12 @@ def run(code):
 				a = stack[-1]
 				b = stack[-2]
 				stack = stack[:-2]
-				stack.append(a[:b % len(a)])
+				stack.append(a[:b])
 			elif command == "t":
 				a = stack[-1]
 				b = stack[-2]
 				stack = stack[:-2]
-				stack.append(a[b % len(a):])
+				stack.append(a[b:])
 			elif command in "0123456789":
 				stack.append(stack.pop() * 10 + int(command))
 			elif command == "u":
@@ -166,6 +166,7 @@ def run(code):
 				stack.append(stack.pop() + command)
 	if stack and not mapFlag:
 		print(stack[-1])
+
         
 if __name__ == '__main__':
 	program = open(__import__('sys').argv[1], 'r').read()
