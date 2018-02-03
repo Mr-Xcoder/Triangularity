@@ -43,8 +43,12 @@ def run(code):
 				additive_index = 0
 			elif command == "@":
 				stack.append(stack.pop() + 1)
+			elif command == "f":
+				stack.append(int(stack.pop()))
 			elif command == "P":
 				stack.pop()
+			elif command == "`":
+				stack.extend(stack.pop())
 			elif command == "!":
 				stack.append(0 if stack.pop() else 1)
 			elif command == ")":
@@ -101,6 +105,14 @@ def run(code):
 				stack = stack[:-2]
 				stack.append(a)
 				stack.append(b)
+			elif command == "S":
+				a = stack[-1]
+				b = stack[-2]
+				stack = stack[:-2]
+				try:
+					stack.append(a.index(b))
+				except ValueError:
+					stack.append(-1)
 			elif command == "R":
 				stack.append(stack.pop()[::-1])
 			elif command == "^":
