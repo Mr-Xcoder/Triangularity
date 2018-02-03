@@ -2,7 +2,7 @@ stack = []
 visited_indices = []
 additive_index = 0
 mapFlag = False
-STDIN = __import__('sys').stdin.read().split("\n")
+STDIN = __import__("sys").stdin.read().split("\n")
 
 def run(code):
 	global stack
@@ -55,7 +55,7 @@ def run(code):
 				stack = stack[:-2]
 				stack.append(list(range(a, b)))
 			elif command == "E":
-				stack.append(eval(stack.pop()))
+				stack.append(__import__("ast").literal_eval(stack.pop()))
 			elif command == "I":
 				stack.append(STDIN[stack.pop() % len(STDIN)])
 			elif command == "=":
@@ -86,7 +86,7 @@ def run(code):
 				stack = stack[:-2]
 				stack.append(a / b)
 			elif command == "i":
-				stack.append(int(stack.pop()))
+				stack.append(STDIN)
 			elif command == "`":
 				stack.append(str(stack.pop()))
 			elif command == "L":
@@ -168,6 +168,6 @@ def run(code):
 		print(stack[-1])
 
         
-if __name__ == '__main__':
-	program = open(__import__('sys').argv[1], 'r').read()
+if __name__ == "__main__":
+	program = open(__import__("sys").argv[1], "r").read()
 	run(program)
