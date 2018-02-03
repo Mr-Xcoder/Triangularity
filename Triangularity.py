@@ -2,16 +2,18 @@ stack = []
 visited_indices = []
 additive_index = 0
 mapFlag = False
+filterFlag = False
 STDIN = __import__("sys").stdin.read().split("\n")
 
 def run(code):
 	global stack
 	global mapFlag
+	global filterFlag
 	global visited_indices
 	global additive_index
 	lines = code.split('\n')
 	length = len(code.split('\n'))
-	if not mapFlag:
+	if not mapFlag and not filterFlag:
 		if not all(len(elem) == length * 2 - 1 for elem in lines):
 			print("I smell no triangularity. YOU SHALL NOT PASS!")
 			return
@@ -25,22 +27,38 @@ def run(code):
 		if index + additive_index not in visited_indices:
 			visited_indices.append(index + additive_index)
 		else:
-			if not mapFlag:
+			if not mapFlag and not filterFlag:
 				continue
 		if code[:index].count('"') % 2 == 0:
 			if command == "M":
+				additive_index_copy = additive_index
 				stack_copy = stack
-				added_list = []
+				mapped_list = []
 				mapped = stack.pop()
 				additive_index = index + 1
 				mapFlag = True
 				for ind, element in enumerate(mapped):
 					stack = [element]
 					run(code[index + 1 : index + code[index:].find("}")])
-					added_list.append(stack[-1])
-				stack = stack_copy + [added_list]
+					mapped_list.append(stack[-1])
+				stack = stack_copy + [mapped_list]
 				mapFlag = False
-				additive_index = 0
+				additive_index = additive_index_copy
+			elif command == "F":
+				additive_index_copy = additive_index
+				stack_copy = stack
+				filtered_list = []
+				filtered = stack.pop()
+				additive_index = index + 1
+				filterFlag = True
+				for ind, element in enumerate(filtered):
+					stack = [element]
+					run(code[index + 1 : index + code[index:].find("{")])
+					if stack[-1]:
+						filtered_list.append(element)
+				stack = stack_copy + [filtered_list]
+				filterFlag = False
+				additive_index = additive_index_copy
 			elif command == "@":
 				stack.append(stack.pop() + 1)
 			elif command == "f":
@@ -50,7 +68,7 @@ def run(code):
 			elif command == "`":
 				stack.extend(stack.pop())
 			elif command == "!":
-				stack.append(0 if stack.pop() else 1)
+				stack.append(int(not stack.pop()))
 			elif command == ")":
 				stack.append(0)
 			elif command == "r":
