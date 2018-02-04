@@ -76,6 +76,8 @@ def run(code):
 				stack.append(list(range(a, b)))
 			elif command == "E":
 				stack.append(eval(stack.pop()))
+			elif command == "e":
+				stack.extend(stack.pop())
 			elif command == "I":
 				stack.append(STDIN[stack.pop() % len(STDIN)])
 			elif command == "=":
