@@ -65,8 +65,6 @@ def run(code):
 				stack.append(int(stack.pop()))
 			elif command == "P":
 				stack.pop()
-			elif command == "`":
-				stack.extend(stack.pop())
 			elif command == "!":
 				stack.append(int(not stack.pop()))
 			elif command == ")":
