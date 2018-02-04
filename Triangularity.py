@@ -192,7 +192,7 @@ def run(code):
 		else:
 			if command != '"':
 				stack.append(stack.pop() + command)
-	if stack and not mapFlag:
+	if stack and not mapFlag and not filterFlag:
 		print(stack[-1])
 
         
