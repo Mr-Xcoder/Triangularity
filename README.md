@@ -27,4 +27,4 @@ Or, much shorter:
 
 **Fun fact:** Valid Triangularity programs must have the character count listed in [OEIS A056220](https://oeis.org/A056220) (except for -1), otherwise you are probably doing something wrong.
 
-If you have questions, encounter problems, spot bugs or want to request features, please ping me (`@Mr.Xcoder`) in [its dedicated chatroom](https://chat.stackexchange.com/rooms/71290/a-triangular-strange-esolang) (SE chat).
+The documentation is in [the wiki](https://github.com/Mr-Xcoder/Triangularity/wiki). If you have questions, encounter problems, spot bugs or want to request features, please ping me (`@Mr.Xcoder`) in [its dedicated chatroom](https://chat.stackexchange.com/rooms/71290/a-triangular-strange-esolang) (SE chat). 
