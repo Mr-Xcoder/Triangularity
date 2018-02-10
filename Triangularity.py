@@ -1,11 +1,26 @@
+import sys
+
 stack = []
 visited_indices = []
 additive_index = 0
 mapFlag = False
 filterFlag = False
-STDIN = __import__("sys").stdin.read().split("\n")
+STDIN = sys.stdin.read().split("\n")
+
+def format_triangularity_code(code):
+	formatted = []
+	dot_length = (lambda n: int(n) + (n != int(n)))(len(code)**.5) - 1
+	for num in range(dot_length, -1, -1):
+		line = num * "." + code[(dot_length - num) ** 2:][:(dot_length - num) * 2 + 1] + num * "."
+		line = line + (dot_length * 2 + 1 - len(line)) * "."
+		formatted.append(line)
+	return "\n".join(formatted)
+
 
 def run(code):
+	if "--format" in sys.argv[1:] or "-f" in sys.argv[1:]:
+		print(format_triangularity_code(code))
+		return
 	global stack
 	global mapFlag
 	global filterFlag
