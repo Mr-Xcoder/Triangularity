@@ -161,7 +161,7 @@ def run(code):
             elif command == "#":
                 register.append(stack.pop())
             elif command == "$":
-                stack.append(register.pop())
+                stack.append(register[-1])
             elif command == "h":
                 a = stack[-1]
                 b = stack[-2]
