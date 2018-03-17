@@ -93,7 +93,6 @@ def run(code):
                 stack.append(list(range(a, b)))
             elif command == "E":
                 stack.append(eval(stack.pop()))
-
             elif command == "e":
                 stack.extend(stack.pop())
             elif command == "I":
@@ -120,11 +119,6 @@ def run(code):
                 stack.append(a + b)
             elif command == "_":
                 stack.append(- stack.pop())
-            elif command == "/":
-                a = stack[-1]
-                b = stack[-2]
-                stack = stack[:-2]
-                stack.append(a / b)
             elif command == "i":
                 stack.append(STDIN)
             elif command == "`":
