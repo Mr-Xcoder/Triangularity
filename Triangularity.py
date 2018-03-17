@@ -161,7 +161,10 @@ def run(code):
             elif command == "#":
                 register.append(stack.pop())
             elif command == "$":
-                stack.append(register[-1])
+                try:
+                    stack.append(register.pop())
+                except IndexError:
+                    stack.append(-1)
             elif command == "h":
                 a = stack[-1]
                 b = stack[-2]
