@@ -1,6 +1,7 @@
 import sys
 
 stack = []
+register = []
 visited_indices = []
 additive_index = 0
 mapFlag = False
@@ -19,7 +20,6 @@ def format_triangularity_code(code):
 
 
 def run(code):
-    register = []
     if "--format" in sys.argv[1:] or "-f" in sys.argv[1:]:
         print(format_triangularity_code(code))
         return
@@ -28,6 +28,7 @@ def run(code):
     global filterFlag
     global visited_indices
     global additive_index
+    global register
     lines = code.split('\n')
     length = len(code.split('\n'))
     if not mapFlag and not filterFlag:
